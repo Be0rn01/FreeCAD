@@ -230,7 +230,11 @@ Application::Application(std::map<std::string,std::string> &mConfig)
         NULL, NULL, NULL, NULL
     };
     PyObject* pAppModule = PyModule_Create(&FreeCADModuleDef);
+#if PY_MINOR_VERSION >= 7
+    _PyImport_FixupBuiltin(pAppModule, "FreeCAD", PyThreadState_Get()->interp->modules);
+#else
     _PyImport_FixupBuiltin(pAppModule, "FreeCAD");
+#endif
 #else
     PyObject* pAppModule = Py_InitModule3("FreeCAD", Application::Methods, FreeCAD_doc);
 #endif
@@ -271,7 +275,11 @@ Application::Application(std::map<std::string,std::string> &mConfig)
         NULL, NULL, NULL, NULL, NULL
     };
     PyObject* pBaseModule = PyModule_Create(&BaseModuleDef);
+#if PY_MINOR_VERSION >= 7
+    _PyImport_FixupBuiltin(pBaseModule, "__FreeCADBase__", PyThreadState_Get()->interp->modules);
+#else
     _PyImport_FixupBuiltin(pBaseModule, "__FreeCADBase__");
+#endif
 #else
     PyObject* pBaseModule = Py_InitModule3("__FreeCADBase__", NULL, Base_doc);
 #endif

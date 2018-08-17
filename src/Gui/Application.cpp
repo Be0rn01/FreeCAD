@@ -358,7 +358,11 @@ Application::Application(bool GUIenabled)
                 NULL, NULL, NULL, NULL
             };
             module = PyModule_Create(&FreeCADGuiModuleDef);
+#if PY_MINOR_VERSION >= 7
+            _PyImport_FixupBuiltin(module, "FreeCADGui", PyThreadState_Get()->interp->modules);
+#else
             _PyImport_FixupBuiltin(module, "FreeCADGui");
+#endif
         }
         else {
             // extend the method list
