@@ -104,7 +104,7 @@ FeaturePythonPyT<FeaturePyT>::~FeaturePythonPyT()
 template<class FeaturePyT>
 int FeaturePythonPyT<FeaturePyT>::__setattro(PyObject *obj, PyObject *attro, PyObject *value)
 {
-    char *attr;
+    const char *attr;
 #if PY_MAJOR_VERSION >= 3
     attr = PyUnicode_AsUTF8(attro);
 #else
