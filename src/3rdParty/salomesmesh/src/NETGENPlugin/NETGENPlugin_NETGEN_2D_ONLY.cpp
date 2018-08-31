@@ -62,8 +62,8 @@ namespace nglib {
 # define OCCGEOMETRY
 #endif
 
-#include <occgeom.hpp>
-#include <meshing.hpp>
+#include </usr/include/netgen/occ/occgeom.hpp>
+#include </usr/include/netgen/meshing/meshing.hpp>
 //#include <meshtype.hpp>
 namespace netgen {
 #if NETGEN_VERSION >= NETGEN_VERSION_STRING(6,2)
