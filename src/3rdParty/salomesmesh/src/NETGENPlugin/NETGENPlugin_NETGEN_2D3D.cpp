@@ -43,7 +43,7 @@
 namespace nglib {
 #include <nglib.h>
 }
-#include <meshing.hpp>
+#include </usr/include/netgen/meshing/meshing.hpp>
 
 using namespace std;
 
